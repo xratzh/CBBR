@@ -22,3 +22,8 @@ yum install -y wget && wget --no-check-certificate -O C61.sh https://raw.githubu
 ```
 wget --no-check-certificate -O C62.sh https://raw.githubusercontent.com/xratzh/CBBR/master/C62.sh && sudo bash C62.sh
 ```
+
+### Tips
+由于这个镜像站的网速时快时慢，所以自己下载了上传到GitHub能保持一个较为稳定的速度。
+原来的内核地址任然在脚本里面，被添加注释了，如果你不信任我上传的内核，可以自己取消注释使用镜像站的内核下载方式。
+最后祝玩的愉快，Debian的就看[Vicer大佬的脚本](https://moeclub.org/2017/06/24/278/)吧。
