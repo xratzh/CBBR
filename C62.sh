@@ -32,3 +32,5 @@ exit 0
 echo "Error, Loading BBR POWERED."
 exit 1
 }
+sed -i "s/default=1/default=0/g" /boot/grub/grub.conf
+sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf   # 防止内核由于update产生变动
