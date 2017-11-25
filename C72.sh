@@ -20,8 +20,8 @@ chmod +x ./tcp_bbr_powered.ko
 cp -rf ./tcp_bbr_powered.ko /lib/modules/$(uname -r)/kernel/net/ipv4
 
 # 插入内核模块
-insmod tcp_bbr_powered.ko
 depmod -a
+modprobe tcp_bbr_powered
 sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
 sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
