@@ -2,7 +2,14 @@
 这是一个方便开启魔改bbr的脚本。执行两步后最后输出`Finish！`提示，则成功。
 
 ---
-### Debian/Ubuntu64位系统开启魔改BBR
+### Debian/Ubuntu（64位）开启魔改BBR
+- Ubuntu14.04需要提前：
+```
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get -y install g++-4.9
+```
 **第一步：**
 ```
 sudo apt-get install -y wget && wget --no-check-certificate -O D1.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D1.sh && sudo bash D1.sh
@@ -13,13 +20,7 @@ sudo apt-get install -y wget && wget --no-check-certificate -O D1.sh https://raw
 ```
 wget --no-check-certificate -O D2.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D2.sh && sudo bash D2.sh
 ```
-- Ubuntu14.04可能需要：
-```
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get -y install g++-4.9
-```
+
 ---
 ### CentOS7开启魔改BBR
 **第一步：**
