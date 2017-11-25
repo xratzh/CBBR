@@ -3,7 +3,11 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-apt-get install -y http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10.8/linux-headers-4.10.8-041008-generic_4.10.8-041008.201703310531_amd64.deb
+wget -O linux-headers-4.10.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10.8/linux-headers-4.10.8-041008_4.10.8-041008.201703310531_all.deb
+dpkg -i linux-headers-4.10.8.deb
+
+wget -O linux-headers-generic-4.10.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10.8/linux-headers-4.10.8-041008-generic_4.10.8-041008.201703310531_amd64.deb
+dpkg -i linux-headers-generic-4.10.8.deb
 
 which gcc >/dev/null 2>&1
 [ $? -ne '0' ] && {
