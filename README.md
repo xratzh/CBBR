@@ -12,6 +12,7 @@ yum install -y wget && wget --no-check-certificate -O C71.sh https://raw.githubu
 wget --no-check-certificate -O C72.sh https://raw.githubusercontent.com/xratzh/CBBR/master/C72.sh && sudo bash C72.sh
 ```
 
+---
 ### CentOS6开启魔改BBR
 **第一步：**
 ```
@@ -25,6 +26,8 @@ wget --no-check-certificate -O C62.sh https://raw.githubusercontent.com/xratzh/C
 ```
 
 ### Tips
+- 为什么不能一键，因为Linux内核在4.0后支持不重启更换，但是CentOS很多的内核都是3.X的版本，而Debian和Ubuntu则是4.X的版本。
+- Xratzh压力测试，发现bbr和魔改bbr都开启时会达到最快（个人验证）
 - 脚本里加入了对内核的锁定，之后update时不会变动内核。
 - 由于这个我找到的历史内核的镜像站的网速时快时慢，所以自己下载了上传到GitHub，这样能保持一个较为稳定的速度。原来的内核地址仍然在脚本里面，只是被添加注释了，如果你不信任我上传的内核，可以自己取消注释使用镜像站的内核下载方式。   
 
