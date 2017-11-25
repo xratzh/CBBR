@@ -2,7 +2,7 @@
 这是一个方便开启魔改bbr的脚本。执行两步后最后输出`Finish！`提示，则成功。
 
 ---
-### Debian/Ubuntu开启魔改BBR
+### Debian/Ubuntu64位系统开启魔改BBR
 **第一步：**
 ```
 sudo apt-get install -y wget && wget --no-check-certificate -O D1.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D1.sh && sudo bash D1.sh
