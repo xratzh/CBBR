@@ -6,10 +6,10 @@ export PATH
 [ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 
 KernelList="$(dpkg -l |grep 'linux-image' |awk '{print $2}')"
-[ -z "$(echo $KernelList |grep -o linux-image-4.11.8-041008-generic)" ] && echo "Install error." && exit 1
+[ -z "$(echo $KernelList |grep -o linux-image-4.11.8-041108-generic)" ] && echo "Install error." && exit 1
 for KernelTMP in `echo "$KernelList"`
  do
-  [ "$KernelTMP" != "linux-image-4.11.8-041008-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && apt-get purge "$KernelTMP" -y >/dev/null 2>&1
+  [ "$KernelTMP" != "linux-image-4.11.8-041108-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && apt-get purge "$KernelTMP" -y >/dev/null 2>&1
 done
 
 wget -O linux-headers-4.11.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.11.8/linux-headers-4.11.8-041108_4.11.8-041108.201706290836_all.deb
