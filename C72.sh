@@ -3,11 +3,19 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
+KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
+[ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el7.elrepo.x86_64)" ] && echo "Install error." && exit 1
+for KernelTMP in `echo "$KernelList"`
+ do
+  [ "$KernelTMP" != "kernel-ml-4.11.8-1.el7.elrepo.x86_64" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && yum remove "$KernelTMP" -y >/dev/null 2>&1
+done
+
 yum remove kernel-headers -y
-# yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-headers-4.11.8-1.el7.elrepo.x86_64.rpm
+# http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/
 yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel7/kernel-ml-headers-4.11.8-1.el7.elrepo.x86_64.rpm
-# yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-devel-4.11.8-1.el7.elrepo.x86_64.rpm
 yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel7/kernel-ml-devel-4.11.8-1.el7.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel7/kernel-ml-tools-libs-4.11.8-1.el7.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel7/kernel-ml-tools-4.11.8-1.el7.elrepo.x86_64.rpm
 
 sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf # 防止内核由于update产生变动
 
