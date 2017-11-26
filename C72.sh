@@ -3,6 +3,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
+[ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
 [ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el7.elrepo.x86_64)" ] && echo "Install error." && exit 1
 for KernelTMP in `echo "$KernelList"`
