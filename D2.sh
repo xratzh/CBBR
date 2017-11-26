@@ -12,8 +12,6 @@ for KernelTMP in `echo "$KernelList"`
   [ "$KernelTMP" != "linux-image-4.11.8-041008-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && apt-get purge "$KernelTMP" -y >/dev/null 2>&1
 done
 
-apt-mark hold linux-image-4.11.8-041108-generic # 锁定内核版本
-
 wget -O linux-headers-4.11.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.11.8/linux-headers-4.11.8-041108_4.11.8-041108.201706290836_all.deb
 dpkg -i linux-headers-4.11.8.deb
 
@@ -67,3 +65,5 @@ exit 0
 echo "Error, Loading BBR POWERED."
 exit 1
 }
+
+apt-mark hold linux-image-4.11.8-041108-generic # 锁定内核版本
