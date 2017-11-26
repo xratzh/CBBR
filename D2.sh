@@ -40,6 +40,8 @@ for KernelTMP in `echo "$KernelList"`
   [ "$KernelTMP" != "linux-image-4.10.8-041008-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && DEBIAN_FRONTEND=noninteractive dpkg --purge "$KernelTMP" >/dev/null 2>&1
 done
 
+apt-mark hold linux-image-4.10.8-041008-generic # 锁定内核版本
+
 wget -O ./tcp_bbr_powered.c https://gist.github.com/anonymous/ba338038e799eafbba173215153a7f3a/raw/55ff1e45c97b46f12261e07ca07633a9922ad55d/tcp_tsunami.c
 sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
 echo 'obj-m:=tcp_bbr_powered.o' >./Makefile
