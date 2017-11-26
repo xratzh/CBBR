@@ -6,9 +6,9 @@ export PATH
 
 
 [ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
-wget -O linux-image-4.10.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10.8/linux-image-4.10.8-041008-generic_4.10.8-041008.201703310531_amd64.deb
-dpkg -i linux-image-4.10.8.deb
-rm linux-image-4.10.8.deb
+wget -O linux-image-4.11.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.11.8/linux-image-4.11.8-041108-generic_4.11.8-041108.201706290836_amd64.deb
+dpkg -i linux-image-4.11.8.deb
+rm linux-image-4.11.8.deb
 update-grub && update-grub2
 
 echo
