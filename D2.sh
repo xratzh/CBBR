@@ -13,7 +13,7 @@ rm linux-headers-4.10.8.deb linux-headers-generic-4.10.8.deb
 which gcc >/dev/null 2>&1
 [ $? -ne '0' ] && {
 echo "Install gcc..."
-DEBIAN_FRONTEND=noninteractive apt-get install -y -qq gcc >/dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get install -y -qq gcc make>/dev/null 2>&1
 which gcc >/dev/null 2>&1
 [ $? -ne '0' ] && {
 echo "Error! Install gcc. "
