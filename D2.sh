@@ -3,6 +3,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
+[ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 wget -O linux-headers-4.10.8.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10.8/linux-headers-4.10.8-041008_4.10.8-041008.201703310531_all.deb
 dpkg -i linux-headers-4.10.8.deb
 
@@ -31,6 +32,13 @@ echo "You can try apt-get install -y gcc-4.9 or apt-get install -y gcc-6"
 echo "Please upgrade it manually! "
 exit 1
 }
+
+KernelList="$(dpkg -l |grep 'linux-image' |awk '{print $2}')"
+[ -z "$(echo $KernelList |grep -o linux-image-4.10.8-041008-generic)" ] && echo "Install error." && exit 1
+for KernelTMP in `echo "$KernelList"`
+ do
+  [ "$KernelTMP" != "linux-image-4.10.8-041008-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && DEBIAN_FRONTEND=noninteractive dpkg --purge "$KernelTMP" >/dev/null 2>&1
+done
 
 wget -O ./tcp_bbr_powered.c https://gist.github.com/anonymous/ba338038e799eafbba173215153a7f3a/raw/55ff1e45c97b46f12261e07ca07633a9922ad55d/tcp_tsunami.c
 sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
