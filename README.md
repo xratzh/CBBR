@@ -10,6 +10,12 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 sudo apt-get -y install g++-4.9
 ```
+
+- Debian9需要提前：
+```
+wget http://snapshot.debian.org/archive/debian/20150123T220434Z/pool/main/o/openssl/libssl1.0.0_1.0.2-1_amd64.deb
+dpkg -i libssl1.0.0_1.0.2-1_amd64.deb
+```
 **第一步：**
 ```
 apt-get install -y wget && wget --no-check-certificate -O D1.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D1.sh && bash D1.sh
