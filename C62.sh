@@ -17,7 +17,7 @@ wget -O ./tcp_bbr_powered.c https://gist.github.com/anonymous/ba338038e799eafbba
 sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
 elif [ $CBBR = 2 ]
 then
-wget -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang-super-powered-testing.c
+wget -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang.c
 sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
 else
     echo "错误！请输入正确编号再重试"
