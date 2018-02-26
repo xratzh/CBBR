@@ -3,6 +3,8 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
+[ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
+
 echo "选择你的要安装的版本，列表如下"
 echo "1: Yankee_bbr_powered"
 echo "2: Nanqinlang_bbr_powered"
@@ -22,7 +24,6 @@ else
     exit 0
 fi
 
-[ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
 [ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el7.elrepo.x86_64)" ] && echo "Install error." && exit 1
 for KernelTMP in `echo "$KernelList"`
