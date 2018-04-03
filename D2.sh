@@ -31,6 +31,7 @@ for KernelTMP in `echo "$KernelList"`
   [ "$KernelTMP" != "linux-image-4.11.8-041108-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && apt-get purge "$KernelTMP" -y >/dev/null 2>&1
 done
 
+apt purge linux-headers*
 wget --no-check-certificate -O linux-headers-4.11.8.deb https://raw.githubusercontent.com/xratzh/CBBR/master/debkernel/linux-headers-4.11.8.deb
 dpkg -i linux-headers-4.11.8.deb
 
