@@ -10,7 +10,7 @@ if [ ! -f "/boot/grub/grub.conf" ]; then
   echo -e "${red}Error:${plain} /boot/grub/grub.conf not found, please check it."
   exit 1
 fi
-sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
+sed -i 's/^default=1/default=0/g' /boot/grub/grub.conf
 
 echo
 read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]" is_reboot
