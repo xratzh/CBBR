@@ -3,7 +3,7 @@
 需要锐速的内核更换，请移步[https://github.com/xratzh/XRSK](https://github.com/xratzh/XRSK)
 
 ---
-### Debian/Ubuntu（64位）开启魔改BBR
+### Debian8、9/Ubuntu14、16（64位）开启魔改BBR
 - Ubuntu14.04需要提前：
 ```
 sudo apt-get install -y software-properties-common
@@ -26,6 +26,20 @@ apt-get install -y wget && wget --no-check-certificate -O D1.sh https://raw.gith
 **第二步：**
 ```
 wget --no-check-certificate -O D2.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D2.sh && bash D2.sh
+```
+
+---
+### Ubuntu18开启魔改BBR
+会把内核锁定在4.15
+**第一步：**
+```
+yum install -y wget && wget --no-check-certificate -O U3.sh https://raw.githubusercontent.com/xratzh/CBBR/master/U3.sh && bash U3.sh
+```
+之后输入Y就会重启
+
+**第二步：**
+```
+wget --no-check-certificate -O U4.sh https://raw.githubusercontent.com/xratzh/CBBR/master/U4.sh && bash U4.sh
 ```
 
 ---
