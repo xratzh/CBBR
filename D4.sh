@@ -5,6 +5,16 @@ export PATH
 
 [ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 
+KernelList="$(dpkg -l |grep 'linux-image' |awk '{print $2}')"
+[ -z "$(echo $KernelList |grep -o linux-image-4.15.0-23-generic)" ] && echo "Install error." && exit 1
+for KernelTMP in `echo "$KernelList"`
+do
+  [ "$KernelTMP" != "linux-image-4.15.0-23-generic" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && apt-get purge "$KernelTMP" -y >/dev/null 2>&1
+done
+
+apt purge linux-headers* linux-modules* -y
+apt install linux-headers-4.15.0-23-generic linux-modules-4.15.0-23-generic linux-modules-extra-4.15.0-23-generic -y
+
 wget -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/tcp-nanqinlang/general/master/General/Debian/source/kernel-v4.15/tcp_nanqinlang.c
 sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
 
