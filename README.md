@@ -30,7 +30,7 @@ wget --no-check-certificate -O D2.sh https://raw.githubusercontent.com/xratzh/CB
 
 ---
 ### Ubuntu18开启魔改BBR
-会把内核锁定在4.15
+会把内核锁定在4.15  
 **第一步：**
 ```
 yum install -y wget && wget --no-check-certificate -O U3.sh https://raw.githubusercontent.com/xratzh/CBBR/master/U3.sh && bash U3.sh
