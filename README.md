@@ -33,13 +33,13 @@ wget --no-check-certificate -O D2.sh https://raw.githubusercontent.com/xratzh/CB
 会把内核锁定在4.15  
 **第一步：**
 ```
-yum install -y wget && wget --no-check-certificate -O U3.sh https://raw.githubusercontent.com/xratzh/CBBR/master/U3.sh && bash U3.sh
+apt install -y wget && wget --no-check-certificate -O D3.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D3.sh && bash D3.sh
 ```
 之后输入Y就会重启
 
 **第二步：**
 ```
-wget --no-check-certificate -O U4.sh https://raw.githubusercontent.com/xratzh/CBBR/master/U4.sh && bash U4.sh
+wget --no-check-certificate -O D4.sh https://raw.githubusercontent.com/xratzh/CBBR/master/D4.sh && bash D4.sh
 ```
 
 ---
