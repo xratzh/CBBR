@@ -1,6 +1,30 @@
 # CBBR
-这是一个方便开启魔改bbr&bbr的脚本。执行两步后最后输出`Finish！`提示，则成功。  
+~~这是一个方便开启魔改bbr&bbr的脚本。~~
+执行两步后最后输出`Finish！`提示，则成功。  
+已更新新的推荐方式
 需要锐速的内核更换，请移步[https://github.com/xratzh/XRSK](https://github.com/xratzh/XRSK)
+
+## 暂停更新&推荐：
+<font color=red>推荐debian和ubuntu用户使用</font>
+
+更方便的方式，基于[https://xanmod.org](https://xanmod.org/)
+升级最新内核，开启bbr即可:
+- 安装最新的内核并重启：
+```
+echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list
+wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
+sudo apt update && sudo apt install linux-xanmod
+update grub && update grub2 && reboot
+```
+- 开启BBR
+```
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+sysctl -p
+sysctl net.ipv4.tcp_available_congestion_control
+lsmod | grep bbr
+```
+有输出既是开启了。
 
 ---
 ### Debian8、9/Ubuntu14、16（64位）开启魔改BBR
